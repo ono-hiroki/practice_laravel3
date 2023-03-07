@@ -1,3 +1,4 @@
+service_name := app
 install:
 	@make build
 	@make up
@@ -86,3 +87,13 @@ ide-helper:
 	docker compose exec app php artisan ide-helper:generate
 	docker compose exec app php artisan ide-helper:meta
 	docker compose exec app php artisan ide-helper:models --nowrite
+cache:
+	docker-compose exec $(service_name) php artisan cache:clear
+	docker-compose exec $(service_name) php artisan config:clear
+	docker-compose exec $(service_name) php artisan route:clear
+	docker-compose exec $(service_name) php artisan view:clear
+	docker-compose exec $(service_name) composer dump-autoload
+	docker-compose exec $(service_name) php artisan clear-compiled
+	docker-compose exec $(service_name) php artisan optimize
+	docker-compose exec $(service_name) php artisan config:cache
+
