@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/sample', [IndexController::class, 'show']);
 Route::get('/sample/{id}', [IndexController::class, 'showId']);
+Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class);
