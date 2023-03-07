@@ -8,6 +8,12 @@
 </head>
 <body>
 <h1>Index</h1>
-<p>{{ $name }}</p>
+<div>
+    @foreach($tweets as $tweet)
+        <div>
+            <p>{{$tweet->content}}</p>
+        </div>
+    @endforeach
+</div>
 </body>
 </html>
