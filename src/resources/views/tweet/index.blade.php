@@ -9,11 +9,16 @@
 <body>
 <h1>Index</h1>
 <div>
-    @foreach($tweets as $tweet)
-        <div>
-            <p>{{$tweet->content}}</p>
-        </div>
-    @endforeach
+    <p>投稿フォーム</p>
+    <form action="{{route('tweet.create')}}" method="post">
+        @csrf
+        <label for="tweet-content">ツイート内容</label>
+        <textarea id="tweet-content" type="text" name="tweet" placeholder="つぶやきを入力"></textarea>
+        <button type="submit">投稿</button>
+        @error('tweet')
+        <p style="color: red">{{$message}}</p>
+        @enderror
+    </form>
 </div>
 </body>
 </html>
