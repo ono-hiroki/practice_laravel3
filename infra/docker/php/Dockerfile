@@ -22,6 +22,8 @@ RUN apt-get update \
     libzip-dev \
     libicu-dev \
     libonig-dev \
+    curl \
+    gnupg \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && locale-gen en_US.UTF-8 \
@@ -33,6 +35,12 @@ RUN apt-get update \
     bcmath \
   && composer config -g process-timeout 3600 \
   && composer config -g repos.packagist composer https://packagist.org
+
+# nodeをinstall
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+  && apt-get install -y nodejs \
+  && npm install -g npm
+
 
 FROM base AS development
 
