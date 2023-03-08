@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>Index</h1>
+@auth
 <div>
     <p>投稿フォーム</p>
     @if(session('feedback.success'))
@@ -23,6 +24,7 @@
         @enderror
     </form>
 </div>
+@endauth
 @foreach($tweets as $tweet)
     <details>
         <summary>{{$tweet->content}}</summary>
