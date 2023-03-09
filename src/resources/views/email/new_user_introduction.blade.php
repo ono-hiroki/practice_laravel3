@@ -1,3 +1,14 @@
-{{$toUser->name}}さん
+{{--@component('mail::message')--}}
 
-{{$toUser->name}}さんこんにちは！{{$newUser->name}}さんが参加しましたよ！
+    # 新しいユーザーが追加されました！
+
+    {{$toUser->name}}さんこんにちは！
+    @component('mail::panel')
+        {{$newUser->name}}さんが参加しましたよ！
+    @endcomponent
+
+    @component('mail::button', ['url' => route('tweet.index')])
+        つぶやきを見に行く
+    @endcomponent
+
+{{--@endcomponent--}}

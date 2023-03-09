@@ -42,9 +42,7 @@ class NewUserIntroduction extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
-            view: 'email.new_user_introduction',
-        );
+        return new Content(markdown: 'email.new_user_introduction',);
     }
 
     /**
