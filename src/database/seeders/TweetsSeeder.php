@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Image;
 use App\Models\Tweet;
 use Database\Factories\TweetFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,6 +17,9 @@ class TweetsSeeder extends Seeder
      */
     public function run(): void
     {
-        Tweet::factory()->count(10)->create();
+        Tweet::factory()->count(10)->create()->each(fn($tweet) =>
+        Image::factory()->count(4)->create()->each(fn($image) =>
+        $tweet->images()->attach($image->id)));
+
     }
 }
