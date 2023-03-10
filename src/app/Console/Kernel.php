@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
         // 毎分実行
         $schedule->command('sample-command')->everyMinute()
             ->emailOutputTo('hello@example.com');
+        $schedule->command('mail:send-daily-tweet-count-mail')->everyMinute()
+            ->emailOutputTo('hello@example.com');
     }
 
     /**
