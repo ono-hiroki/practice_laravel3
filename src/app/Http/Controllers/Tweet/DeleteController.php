@@ -20,8 +20,7 @@ class DeleteController extends Controller
         if (!$tweetService->checkOwnTweet($request->user()->id, $tweetId)) {
             throw new NotFoundHttpException();
         }
-        $tweet = Tweet::where('id', $tweetId)->firstOrFail();
-        $tweet->delete();
+        $tweetService->deleteTweet($tweetId);
         return redirect()->route('tweet.index')->with('feedback.success', 'Tweet deleted successfully');
     }
 }
